@@ -1,0 +1,29 @@
+{
+  "name": "docsify-image-slider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/dist/docsify-image-slider.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erectbranch/docsify-image-slider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/erectbranch/docsify-image-slider/issues"
+  },
+  "scripts": {
+    "build": "uglifyjs ./src/slider.js -m -o ./dist/docsify-image-slider.min.js && uglifycss ./src/stylesheet.css --output ./dist/slider.min.css",
+    "publish": "npm publish --access public"
+  },
+  "keywords": [
+    "docsify", 
+    "docsify-plugin", 
+    "docsify-image-slider"
+  ],
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
+  "author": "Sungjae Jeon",
+  "license": "MIT"
+}
