@@ -4,10 +4,10 @@
 
 _2025-04-11_
 
-- Update plugin configuration
+- Added configuration options for auto-switching and interval time.
 
 ## 1.0.0
 
 _2025-04-08_
 
-- Initial release
+- Initial release with basic functionality.

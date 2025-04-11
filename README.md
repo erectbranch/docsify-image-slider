@@ -10,7 +10,7 @@ A plugin for [Docsify](https://docsify.js.org/#/) that allows you to create a sl
 
 </div>
 
-## Import
+## 🔨 Import
 
 To use the image slider, you need to include the plugin in your Docsify `index.html` file:
 
@@ -28,7 +28,7 @@ To use the image slider, you need to include the plugin in your Docsify `index.h
 
 ---
 
-## Usage
+## 📋 Usage
 
 To create an image slider, you can use the following syntax in your markdown files:
 
@@ -40,7 +40,7 @@ To create an image slider, you can use the following syntax in your markdown fil
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
 To configure the slider, you can set options in your `index.html` file. The available options are:
 
@@ -61,7 +61,7 @@ window.$docsify = {
 
 ---
 
-## Contribution
+## ✨ Contribution
 
 Please feel free to submit a pull request or open an issue on the GitHub repository. Your contributions are welcome and appreciated!
 
