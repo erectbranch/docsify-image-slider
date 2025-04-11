@@ -40,6 +40,27 @@ To create an image slider, you can use the following syntax in your markdown fil
 
 ---
 
+## Configuration
+
+To configure the slider, you can set options in your `index.html` file. The available options are:
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `auto` | `Boolean` | false | Whether to automatically switch images. |
+| `intervalTime` | `Int` | 20000 | Time interval for automatic switching (in milliseconds). |
+
+```javascript
+window.$docsify = {
+  slider: {
+    // Default options
+    auto: false,
+    intervalTime: 20000,
+  },
+};
+```
+
+---
+
 ## Contribution
 
 Please feel free to submit a pull request or open an issue on the GitHub repository. Your contributions are welcome and appreciated!

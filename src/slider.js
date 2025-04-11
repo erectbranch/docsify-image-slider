@@ -1,5 +1,5 @@
 window.$docsify = window.$docsify || {};
-window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook) => {
+window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
     const slideRegEx = /\[\[slider\]\]\((.+?)\)/g;
 
     hook.beforeEach(content => {
@@ -42,60 +42,57 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook) => {
     });
 
     hook.doneEach(() => {
-        if (hasSlider) {
-            const sliderPageDiv = document.getElementsByClassName("image-slider")[0];
-            sliderPageDiv.innerHTML += `<style>${cssStyles}</style>`;
+        if (!hasSlider) return;
+
+        const sliderPageDiv = document.getElementsByClassName("image-slider")[0];
+        sliderPageDiv.innerHTML += `<style>${cssStyles}</style>`;
+
+        const slideConfig = vm.config.slider || {};
+        const auto = slideConfig["auto"] || false;
+        const intervalTime = slideConfig["intervalTime"] || 20000;
+        let slideInterval;
+
+        const nextSlide = () => {
+            const slides = document.querySelectorAll(".slide");
+            const current = document.querySelector(".current");
+            current.classList.remove("current");
+            if (current.nextElementSibling) {
+              current.nextElementSibling.classList.add("current");
+            } else {
+              slides[0].classList.add("current");
+            }
+        };
+
+        const prevSlide = () => {
+            const slides = document.querySelectorAll(".slide");
+            const current = document.querySelector(".current");
+            current.classList.remove("current");
+            if (current.previousElementSibling) {
+              current.previousElementSibling.classList.add("current");
+            } else {
+              slides[slides.length - 1].classList.add("current");
+            }
+        };
+
+        document.addEventListener('click', (event) => {
+            if (event.target.id === 'next-slide') {
+                nextSlide();
+                if (auto) {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, intervalTime);
+                }
+            }
+            if (event.target.id === 'prev-slide') {
+                prevSlide();
+                if (auto) {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, intervalTime);
+                }
+            }
+        });
+
+        if (auto) {
+            slideInterval = setInterval(nextSlide, intervalTime);
         }
     });
 });
-
-
-const nextSlideButton = document.getElementById("next-slide");
-const prevSlideButton = document.getElementById("prev-slide");
-const auto = true;
-const intervalTime = 20000;
-let slideInterval;
-
-const nextSlide = () => {
-  const slides = document.querySelectorAll(".slide");
-  const current = document.querySelector(".current");
-  current.classList.remove("current");
-  if (current.nextElementSibling) {
-    current.nextElementSibling.classList.add("current");
-  } else {
-    slides[0].classList.add("current");
-  }
-};
-
-const prevSlide = () => {
-    const slides = document.querySelectorAll(".slide");
-    const current = document.querySelector(".current");
-    current.classList.remove("current");
-    if (current.previousElementSibling) {
-      current.previousElementSibling.classList.add("current");
-    } else {
-      slides[slides.length - 1].classList.add("current");
-    }
-  };
-
-
-document.addEventListener('click', (event) => {
-    if (event.target.id === 'next-slide') {
-        nextSlide();
-        if (auto) {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-    }
-    if (event.target.id === 'prev-slide') {
-        prevSlide();
-        if (auto) {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-    }
-});
-
-if (auto) {
-    slideInterval = setInterval(nextSlide, intervalTime);
-}
