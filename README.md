@@ -11,7 +11,7 @@ A plugin for [Docsify](https://docsify.js.org/#/) that allows you to create a sl
 
 </div>
 
-## 🔨 Import
+## Import
 
 To use the image slider, you need to include the plugin in your Docsify `index.html` file:
 
@@ -29,7 +29,7 @@ To use the image slider, you need to include the plugin in your Docsify `index.h
 
 ---
 
-## 📋 Usage
+## Usage
 
 To create an image slider, you can use the following syntax in your markdown files:
 
@@ -41,7 +41,7 @@ To create an image slider, you can use the following syntax in your markdown fil
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 To configure the slider, you can set options in your `index.html` file. The available options are:
 
@@ -62,7 +62,7 @@ window.$docsify = {
 
 ---
 
-## 🎨 Customization
+## Customization
 
 The slider can be customized using CSS. You can override the following CSS variables.
 
@@ -82,16 +82,24 @@ To change the transition effect and the size of the slider, you can add the foll
 ```html
 <style>
   :root {
+    /* slider */
+    --docsify-image-slider-transition: 0.4s ease-in-out;
+    --docsify-image-slider-width: 50vw;
+    --docsify-image-slider-height: 50vh;
+    --docsify-image-slider-max-width: 768px;
+    --docsify-image-slider-overflow: hidden;
+
     /* slider-buttons */
-    --docsify-image-slider-button-color: #000000;
-    --docsify-image-slider-button-border-color: #000000;
+    --docsify-image-slider-button-color: #a0a0a0;
+    --docsify-image-slider-button-bg-color: transparent;
+    --docsify-image-slider-button-border-color: #a0a0a0;
   }
 </style>
 ```
 
 ---
 
-## ✨ Contribution
+## Contribution
 
 Please feel free to submit a pull request or open an issue on the GitHub repository. Your contributions are welcome and appreciated!
 
