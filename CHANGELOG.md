@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.1
+
+_2025-04-20_
+
+- Fixed a bug where the `docsify-image-slider-max-width` CSS variable was not being applied correctly.
+
 ## 1.2.0
 
 _2025-04-11_

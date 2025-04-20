@@ -26,7 +26,8 @@
 .slider {
   position: relative;
   width: var(--docsify-image-slider-width);  
-  height: var(--docsify-image-slider-height);   
+  height: var(--docsify-image-slider-height);
+  max-width: var(--docsify-image-slider-max-width);
   overflow: var(--docsify-image-slider-overflow);
   flex-shrink: 0;
 }
@@ -72,7 +73,7 @@ button.slider-buttons {
   margin: 0 1rem;
 }
 
-@media (max-width: var(--docsify-image-slider-max-width)) {
+@media {
   .slide .content {
     left: -80%;   
     width: 80%;    
