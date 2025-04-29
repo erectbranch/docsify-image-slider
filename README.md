@@ -18,13 +18,13 @@ To use the image slider, you need to include the plugin in your Docsify `index.h
 **Add stylesheet**
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-image-slider/dist/slider.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-image-slider@latest/dist/slider.min.css">
 ```
 
 **Add script**
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/docsify-image-slider/dist/docsify-image-slider.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-image-slider@latest/dist/docsify-image-slider.min.js"></script>
 ```
 
 ---
