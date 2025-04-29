@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.3.0
+
+_2025-04-29_
+
+- Simplified the slider syntax for easier usage.
+- Added customization options for button locations and colors.
+
 ## 1.2.1
 
 _2025-04-20_

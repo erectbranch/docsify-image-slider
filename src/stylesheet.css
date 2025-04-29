@@ -5,10 +5,12 @@
   --docsify-image-slider-height: 50vh;
   --docsify-image-slider-max-width: 768px;
   --docsify-image-slider-overflow: hidden;
+  --docsify-image-slider-left-right-margin: -3rem;
 
   /* slider-buttons */
   --docsify-image-slider-button-color: #a0a0a0;
   --docsify-image-slider-button-bg-color: transparent;
+  --docsify-image-slider-button-bg-hover-color: #a0a0a01A;
   --docsify-image-slider-button-border-color: #a0a0a0;
 }
 
@@ -29,6 +31,7 @@
   height: var(--docsify-image-slider-height);
   max-width: var(--docsify-image-slider-max-width);
   overflow: var(--docsify-image-slider-overflow);
+  margin: 0 var(--docsify-image-slider-left-right-margin);
   flex-shrink: 0;
 }
 
@@ -73,19 +76,6 @@ button.slider-buttons {
   margin: 0 1rem;
 }
 
-@media {
-  .slide .content {
-    left: -80%;   
-    width: 80%;    
-    padding: 2rem;
-    line-height: 1.6;
-  }
-
-  .slide .content h1 {
-    font-size: 2rem;
-  }
-
-  .slide.current .content {
-    transform: translateX(80%);
-  }
+button.slider-buttons:hover {
+  background-color: var(--docsify-image-slider-button-bg-hover-color);
 }

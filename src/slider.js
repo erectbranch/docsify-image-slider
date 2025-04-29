@@ -17,25 +17,27 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
             }).join('\n');
             
             return string.replace(
-                string, `<div class="slider-wrapper">
-                            <button class="slider-buttons" id="prev-slide">
-                                <i class="fas fa-arrow-left"></i>
-                            </button>
-                            <div class="slider">
-                                <div class="slide current"></div>
-                                ${imageUrls.map((url, index) => {
-                                    console.log(index)
-                                    console.log(imageUrls.length)
-                                    if (index === 0) {
-                                        return "";
-                                    } else {
-                                        return `<div class="slide"></div>`;
-                                    }
-                                }).join('')}
+                string, `<div class="image-slider">
+                            <div class="slider-wrapper">
+                                <button class="slider-buttons" id="prev-slide">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <div class="slider">
+                                    <div class="slide current"></div>
+                                    ${imageUrls.map((url, index) => {
+                                        console.log(index)
+                                        console.log(imageUrls.length)
+                                        if (index === 0) {
+                                            return "";
+                                        } else {
+                                            return `<div class="slide"></div>`;
+                                        }
+                                    }).join('')}
+                                </div>
+                                <button class="slider-buttons" id="next-slide">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
-                            <button class="slider-buttons" id="next-slide">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
                         </div>`
             );
         });

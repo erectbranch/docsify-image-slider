@@ -34,9 +34,7 @@ To use the image slider, you need to include the plugin in your Docsify `index.h
 To create an image slider, you can use the following syntax in your markdown files:
 
 ```html
-<div class="image-slider">
-    [[slider]](img url 1|img url 2|img url 3|...)
-</div>
+[[slider]](img url 1|img url 2|...|img url n)
 ```
 
 ---
@@ -73,8 +71,10 @@ The slider can be customized using CSS. You can override the following CSS varia
 | `--docsify-image-slider-height` | Height of the slide. |
 | `--docsify-image-slider-max-width` | Maximum width of the slide. |
 | `--docsify-image-slider-overflow` | Overflow property for the slide. |
+| `--docsify-image-slider-left-right-margin` | Margin for the left and right sides of the slider buttons. |
 | `--docsify-image-slider-button-color` | Color of the slider arrows. |
 | `--docsify-image-slider-button-bg-color` | Background color of the slider buttons. |
+| `--docsify-image-slider-button-bg-hover-color` | Background color of the slider buttons on hover. |
 | `--docsify-image-slider-button-border-color` | Border color of the slider buttons. |
 
 To change the transition effect and the size of the slider, you can add the following styles to your `index.html` file:
@@ -88,10 +88,12 @@ To change the transition effect and the size of the slider, you can add the foll
     --docsify-image-slider-height: 50vh;
     --docsify-image-slider-max-width: 768px;
     --docsify-image-slider-overflow: hidden;
+    --docsify-image-slider-left-right-margin: -3rem;
 
     /* slider-buttons */
     --docsify-image-slider-button-color: #a0a0a0;
     --docsify-image-slider-button-bg-color: transparent;
+    --docsify-image-slider-button-bg-hover-color: #a0a0a01A;
     --docsify-image-slider-button-border-color: #a0a0a0;
   }
 </style>
