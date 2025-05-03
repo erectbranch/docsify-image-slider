@@ -1,6 +1,6 @@
 {
   "name": "docsify-image-slider",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "",
   "main": "/dist/docsify-image-slider.min.js",
   "repository": {
