@@ -70,12 +70,16 @@ The slider can be customized using CSS. You can override the following CSS varia
 | `--docsify-image-slider-width` | Width of the slide. |
 | `--docsify-image-slider-height` | Height of the slide. |
 | `--docsify-image-slider-max-width` | Maximum width of the slide. |
+| `--docsify-image-slider-max-height` | Maximum height of the slide. |
 | `--docsify-image-slider-overflow` | Overflow property for the slide. |
 | `--docsify-image-slider-left-right-margin` | Margin for the left and right sides of the slider buttons. |
+| `--docsify-image-slider-mobile-width` | Width of the slide on mobile devices. |
 | `--docsify-image-slider-button-color` | Color of the slider arrows. |
 | `--docsify-image-slider-button-bg-color` | Background color of the slider buttons. |
 | `--docsify-image-slider-button-bg-hover-color` | Background color of the slider buttons on hover. |
 | `--docsify-image-slider-button-border-color` | Border color of the slider buttons. |
+| `--docsify-image-slider-bullet-bg-color` | Background color of the slider bullets. |
+| `--docsify-image-slider-bullet-bg-hover-color` | Background color of the current slider bullet. |
 
 To change the transition effect and the size of the slider, you can add the following styles to your `index.html` file:
 
@@ -87,14 +91,21 @@ To change the transition effect and the size of the slider, you can add the foll
     --docsify-image-slider-width: 50vw;
     --docsify-image-slider-height: 50vh;
     --docsify-image-slider-max-width: 768px;
+    --docsify-image-slider-max-height: 400px;
     --docsify-image-slider-overflow: hidden;
     --docsify-image-slider-left-right-margin: -3rem;
+    /* e.g., calc(100vw - .markdown-section padding(40px)*2) */
+    --docsify-image-slider-mobile-width: calc(100vw - 80px);
 
     /* slider-buttons */
     --docsify-image-slider-button-color: #a0a0a0;
     --docsify-image-slider-button-bg-color: transparent;
     --docsify-image-slider-button-bg-hover-color: #a0a0a01A;
     --docsify-image-slider-button-border-color: #a0a0a0;
+
+    /* slider-bullets */
+    --docsify-image-slider-bullet-bg-color: #dee2e6;
+    --docsify-image-slider-bullet-bg-hover-color: #868e86;
   }
 </style>
 ```

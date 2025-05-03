@@ -37,6 +37,11 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
                                 <button class="slider-buttons" id="next-slide">
                                     <i class="fas fa-arrow-right"></i>
                                 </button>
+                                <div class="slider-bullets">
+                                    ${imageUrls.map((_, index) => {
+                                        return `<span class="bullet${index === 0 ? ' active' : ''}" data-index="${index}"></span>`;
+                                    }).join('')}
+                                </div>
                             </div>
                         </div>`
             );
@@ -54,6 +59,15 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
         const intervalTime = slideConfig["intervalTime"] || 20000;
         let slideInterval;
 
+        const updateBullets = () => {
+            const bullets = document.querySelectorAll('.bullet');
+            const slides = document.querySelectorAll('.slide');
+            const currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('current'));
+            bullets.forEach((b, i) => {
+                b.classList.toggle('active', i === currentIndex);
+            });
+        };
+        
         const nextSlide = () => {
             const slides = document.querySelectorAll(".slide");
             const current = document.querySelector(".current");
@@ -63,6 +77,7 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
             } else {
               slides[0].classList.add("current");
             }
+            updateBullets();
         };
 
         const prevSlide = () => {
@@ -74,6 +89,7 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
             } else {
               slides[slides.length - 1].classList.add("current");
             }
+            updateBullets();
         };
 
         document.addEventListener('click', (event) => {
@@ -91,6 +107,17 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
                     slideInterval = setInterval(nextSlide, intervalTime);
                 }
             }
+            if (event.target.classList.contains('bullet')) {
+                const index = parseInt(event.target.getAttribute('data-index'), 10);
+                const slides = document.querySelectorAll('.slide');
+                document.querySelector('.slide.current').classList.remove('current');
+                slides[index].classList.add('current');
+                updateBullets();
+                if (auto) {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, intervalTime);
+                }
+            }            
         });
 
         if (auto) {

@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.0
+
+_2025-05-03_
+
+- Added customization options for adjusting width and height.
+- Added bullets for better navigation.
+
 ## 1.3.0
 
 _2025-04-29_
