@@ -2,6 +2,54 @@ window.$docsify = window.$docsify || {};
 window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
     const slideRegEx = /\[\[slider\]\]\((.+?)\)/g;
 
+    const slideConfig = vm.config.slider || {};
+    const auto = slideConfig["auto"] || false;
+    const intervalTime = slideConfig["intervalTime"] || 20000;
+    const hideToolbar = slideConfig["hideToolbar"] || false;
+
+    function renderSlider(imageUrls) {
+        let sliderContent = "";
+
+        sliderContent += `  <div class="image-slider">
+        <div class="slider-wrapper">
+            <button class="slider-buttons" id="prev-slide">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="slider">
+                <div class="slide current"></div>
+                ${imageUrls.map((_, index) => {
+                    if (index === 0) {
+                        return "";
+                    } else {
+                        return `<div class="slide"></div>`;
+                    }
+                }).join('')}
+            </div>
+            <button class="slider-buttons" id="next-slide">
+                <i class="fas fa-arrow-right"></i>
+            </button>`;
+        
+        if (!hideToolbar) {
+            sliderContent += `
+            <div class="slider-toolbar">
+                <button class="slider-tool-buttons" id="fullscreen">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+            </div>`
+        }
+
+        sliderContent += `
+            <div class="slider-bullets">
+                ${imageUrls.map((_, index) => {
+                    return `<span class="bullet${index === 0 ? ' active' : ''}" data-index="${index}"></span>`;
+                }).join('')}
+            </div>
+        </div>
+    </div>`
+
+        return sliderContent;
+    }
+
     hook.beforeEach(content => {
         hasSlider = content.includes("[[slider]](");
         
@@ -17,33 +65,7 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
             }).join('\n');
             
             return string.replace(
-                string, `<div class="image-slider">
-                            <div class="slider-wrapper">
-                                <button class="slider-buttons" id="prev-slide">
-                                    <i class="fas fa-arrow-left"></i>
-                                </button>
-                                <div class="slider">
-                                    <div class="slide current"></div>
-                                    ${imageUrls.map((url, index) => {
-                                        console.log(index)
-                                        console.log(imageUrls.length)
-                                        if (index === 0) {
-                                            return "";
-                                        } else {
-                                            return `<div class="slide"></div>`;
-                                        }
-                                    }).join('')}
-                                </div>
-                                <button class="slider-buttons" id="next-slide">
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                                <div class="slider-bullets">
-                                    ${imageUrls.map((_, index) => {
-                                        return `<span class="bullet${index === 0 ? ' active' : ''}" data-index="${index}"></span>`;
-                                    }).join('')}
-                                </div>
-                            </div>
-                        </div>`
+                string, renderSlider(imageUrls)
             );
         });
     });
@@ -54,9 +76,6 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
         const sliderPageDiv = document.getElementsByClassName("image-slider")[0];
         sliderPageDiv.innerHTML += `<style>${cssStyles}</style>`;
 
-        const slideConfig = vm.config.slider || {};
-        const auto = slideConfig["auto"] || false;
-        const intervalTime = slideConfig["intervalTime"] || 20000;
         let slideInterval;
 
         const updateBullets = () => {
@@ -117,7 +136,21 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
                     clearInterval(slideInterval);
                     slideInterval = setInterval(nextSlide, intervalTime);
                 }
-            }            
+            }
+            if (event.target.id === 'fullscreen') {
+                const sliderWrapper = document.querySelector('.slider-wrapper');
+                if (!document.fullscreenElement) {
+                    sliderWrapper.requestFullscreen?.() ||
+                    sliderWrapper.webkitRequestFullscreen?.() ||
+                    sliderWrapper.mozRequestFullScreen?.() ||
+                    sliderWrapper.msRequestFullscreen?.();
+                } else {
+                    document.exitFullscreen?.() ||
+                    document.webkitExitFullscreen?.() ||
+                    document.mozCancelFullScreen?.() ||
+                    document.msExitFullscreen?.();
+                }
+            }
         });
 
         if (auto) {

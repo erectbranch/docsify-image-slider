@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.5.0
+
+_2025-05-03_
+
+- Added customization options for adjusting height and margin.
+- Added support for toolbar buttons (e.g., fullscreen).
+
 ## 1.4.0
 
 _2025-05-03_

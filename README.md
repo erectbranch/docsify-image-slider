@@ -47,6 +47,7 @@ To configure the slider, you can set options in your `index.html` file. The avai
 | --- | --- | --- | --- |
 | `auto` | `Boolean` | false | Whether to automatically switch images. |
 | `intervalTime` | `Int` | 20000 | Time interval for automatic switching (in milliseconds). |
+| `hideToolbar` | `Boolean` | false | Whether to hide the toolbar buttons. |
 
 ```javascript
 window.$docsify = {
@@ -54,6 +55,7 @@ window.$docsify = {
     // Default options
     auto: false,
     intervalTime: 20000,
+    hideToolbar: false,
   },
 };
 ```
@@ -62,7 +64,43 @@ window.$docsify = {
 
 ## Customization
 
-The slider can be customized using CSS. You can override the following CSS variables.
+The slider can be customized using CSS. You can override the following CSS variables in your `index.html` file.
+
+```html
+<style>
+:root {
+  /* slider */
+  --docsify-image-slider-transition: 0.4s ease-in-out;
+  --docsify-image-slider-width: 50vw;
+  --docsify-image-slider-height: 50vh;
+  --docsify-image-slider-max-width: 768px;
+  --docsify-image-slider-max-height: 400px;
+  --docsify-image-slider-overflow: hidden;
+  --docsify-image-slider-left-right-margin: -3rem;
+  /* e.g., calc(100vw - .markdown-section padding(40px)*2) */
+  --docsify-image-slider-mobile-width: calc(100vw - 80px);
+  --docsify-image-slider-mobile-height: 30vh;
+
+  /* slider-buttons */
+  --docsify-image-slider-button-color: #a0a0a0;
+  --docsify-image-slider-button-bg-color: transparent;
+  --docsify-image-slider-button-bg-hover-color: #a0a0a01A;
+  --docsify-image-slider-button-border-color: #a0a0a0;
+
+  /* slider-bullets */
+  --docsify-image-slider-bullet-bg-color: #dee2e6;
+  --docsify-image-slider-bullet-bg-hover-color: #868e86;
+  --docsify-image-slider-bullet-margin-top: 50%;
+
+  /* slider-toolbar */
+  --docsify-image-slider-toolbar-color: #f8f9fa;
+  --docsify-image-slider-toolbar-bg-color: #343a40B3;
+  --docsify-image-slider-toolbar-top: 10%;
+}
+</style>
+```
+
+**slider**
 
 | Style | Description |
 | --- | --- |
@@ -74,41 +112,32 @@ The slider can be customized using CSS. You can override the following CSS varia
 | `--docsify-image-slider-overflow` | Overflow property for the slide. |
 | `--docsify-image-slider-left-right-margin` | Margin for the left and right sides of the slider buttons. |
 | `--docsify-image-slider-mobile-width` | Width of the slide on mobile devices. |
+| `--docsify-image-slider-mobile-height` | Height of the slide on mobile devices. |
+
+**slider-buttons**
+
+| Style | Description |
+| --- | --- |
 | `--docsify-image-slider-button-color` | Color of the slider arrows. |
 | `--docsify-image-slider-button-bg-color` | Background color of the slider buttons. |
 | `--docsify-image-slider-button-bg-hover-color` | Background color of the slider buttons on hover. |
 | `--docsify-image-slider-button-border-color` | Border color of the slider buttons. |
+
+**slider-bullets**
+
+| Style | Description |
+| --- | --- |
 | `--docsify-image-slider-bullet-bg-color` | Background color of the slider bullets. |
 | `--docsify-image-slider-bullet-bg-hover-color` | Background color of the current slider bullet. |
+| `--docsify-image-slider-bullet-margin-top` | Top margin for the slider bullets. |
 
-To change the transition effect and the size of the slider, you can add the following styles to your `index.html` file:
+**slider-toolbar**
 
-```html
-<style>
-  :root {
-    /* slider */
-    --docsify-image-slider-transition: 0.4s ease-in-out;
-    --docsify-image-slider-width: 50vw;
-    --docsify-image-slider-height: 50vh;
-    --docsify-image-slider-max-width: 768px;
-    --docsify-image-slider-max-height: 400px;
-    --docsify-image-slider-overflow: hidden;
-    --docsify-image-slider-left-right-margin: -3rem;
-    /* e.g., calc(100vw - .markdown-section padding(40px)*2) */
-    --docsify-image-slider-mobile-width: calc(100vw - 80px);
-
-    /* slider-buttons */
-    --docsify-image-slider-button-color: #a0a0a0;
-    --docsify-image-slider-button-bg-color: transparent;
-    --docsify-image-slider-button-bg-hover-color: #a0a0a01A;
-    --docsify-image-slider-button-border-color: #a0a0a0;
-
-    /* slider-bullets */
-    --docsify-image-slider-bullet-bg-color: #dee2e6;
-    --docsify-image-slider-bullet-bg-hover-color: #868e86;
-  }
-</style>
-```
+| Style | Description |
+| --- | --- |
+| `--docsify-image-slider-toolbar-color` | Color of the slider toolbar buttons. |
+| `--docsify-image-slider-toolbar-bg-color` | Background color of the slider toolbar buttons. |
+| `--docsify-image-slider-toolbar-top` | Top position of the slider toolbar. |
 
 ---
 
